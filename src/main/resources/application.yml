@@ -1,0 +1,38 @@
+server:
+  error:
+    incude-message: always
+    include-binding-errors: always
+
+spring:
+  datasource:
+    url: ${env.DB_URL}
+    password: ${env.DB_PASSWORD}
+    username: ${env.DB_USER}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+  mail:
+    host: ${env.MAIL_HOST}
+    port: ${env.MAIL_PORT}
+    username: ${env.MAIL_USERNAME}
+    password: ${env.MAIL_PASSWORD}
+
+    properties:
+      mail:
+        smtp:
+          ssl:
+            trust: "*"
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
